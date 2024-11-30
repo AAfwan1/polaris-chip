@@ -11,10 +11,10 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "Modern Card";
-    this.subtitle = "A beautifully styled card component.";
+    this.title = "PSU Card";
+    this.subtitle = "A beautifully styled card which is Penn State themed.";
     this.image = "https://via.placeholder.com/400x200"; // Placeholder image
-    this.details = "This is an example of a modern card built with LitElement. It supports dynamic properties and slots for flexible content injection.";
+    this.details = "This is an example of a card that I was told to make in class";
   }
 
   // Define CSS styles scoped to this component
