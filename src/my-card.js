@@ -162,7 +162,7 @@ export class MyCard extends LitElement {
   }
 
   _onButtonClick() {
-    alert('Learn more about this card!');
+    alert('Learn more about this Card!');
   }
 }
 
