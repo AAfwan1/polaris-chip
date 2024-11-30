@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Boilerplate for polaris chip">
+  <meta name="Description" content="Boilerplate for polaris chip and my-card components">
   <base href="/">
 
   <style>
@@ -16,35 +16,74 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+
     polaris-chip {
       margin: 16px;
     }
+
+    my-card {
+      display: block;
+      margin: 16px auto;
+    }
+
     /* Style for normal state */
-#myClickableLink {
-    color: blue;
-    text-decoration: none; /* Removes underline */
-}
+    #myClickableLink {
+      color: blue;
+      text-decoration: none; /* Removes underline */
+    }
 
-/* Style for hover state */
-#myClickableLink:hover {
-    color: red;
-    text-decoration: underline;
-}
-
+    /* Style for hover state */
+    #myClickableLink:hover {
+      color: red;
+      text-decoration: underline;
+    }
   </style>
   <title>polaris-chip / my-card</title>
 </head>
 
 <body>
   <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
+  <!-- Polaris chip examples -->
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+  <!-- Example of a default card -->
+  <my-card
+    title="Default Card"
+    subtitle="This is the default card with no additional content."
+    image="https://via.placeholder.com/400x200"
+    details="This is an example of a simple card with no fancy features."
+  ></my-card>
+
+  <!-- Example of a fancy card with a slot for additional content -->
+  <my-card
+    title="Penn State University"
+    subtitle="We are... Penn State!"
+    image="https://upload.wikimedia.org/wikipedia/commons/e/e5/Penn_State_Nittany_Lions_logo.svg"
+    details="Penn State is a leader in education and athletics."
+    fancy
+    style="--card-bg-color: #f9f9f9; --header-bg-color: #0054a4; --header-text-color: white;"
+  >
+    <p>Welcome to Penn State University. We are a community dedicated to excellence in education and research.</p>
+    <div slot="details">
+      Additional details about Penn State can go here. Explore our programs and vibrant campus life.
+    </div>
+  </my-card>
+
+  <!-- Example of a card with a clickable link -->
+  <my-card
+    title="Learn More"
+    subtitle="Click the button below to explore."
+    image="https://via.placeholder.com/400x200"
+    details="Click the link below to learn more about this topic."
+  >
+    <p slot="details">
+      <a href="https://example.com" target="_blank" id="myClickableLink">Click here to explore more!</a>
+    </p>
+  </my-card>
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
@@ -52,5 +91,3 @@
 </body>
 
 </html>
-<a href="https://example.com" target="_blank" id="myClickableLink">Click me!</a>
-
