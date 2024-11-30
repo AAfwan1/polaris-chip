@@ -2,10 +2,9 @@ import { LitElement, html, css } from 'lit';
 
 /**
  * Modern and polished card component with dynamic properties and styling
- * Updated to include the 'fancy' attribute, collapsible details, and synchronization.
+ * Updated to include the 'fancy' attribute, better visuals, and spacing between cards.
  */
 export class MyCard extends LitElement {
-  // Define the tag name for the custom element
   static get tag() {
     return 'my-card';
   }
@@ -14,9 +13,11 @@ export class MyCard extends LitElement {
     super();
     this.title = 'PSU Card';
     this.subtitle = 'A beautifully styled card which is Penn State themed.';
-    this.image = 'https://brand.psu.edu/images/backgrounds/veritcal-1-mark_registered.png'; // Placeholder image
-    this.details = 'This is an example of a card that I was told to make in class';
-    this.fancy = false; // Default state
+    this.image =
+      'https://brand.psu.edu/images/backgrounds/veritcal-1-mark_registered.png';
+    this.details =
+      'This is an example of a card that was updated as per your request.';
+    this.fancy = false; // Default fancy state
   }
 
   static get properties() {
@@ -34,7 +35,7 @@ export class MyCard extends LitElement {
       :host {
         display: block;
         max-width: 400px;
-        margin: 20px auto;
+        margin: 16px auto; /* Add spacing between cards */
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -47,17 +48,20 @@ export class MyCard extends LitElement {
 
       :host([fancy]) {
         transform: scale(1.05);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        border: 1px solid #0054a4;
       }
 
       img {
         display: block;
         width: 100%;
         height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
       }
 
       .card-header {
-        padding: 20px;
+        padding: 16px;
         background-color: var(--header-bg-color, #0054a4);
         color: var(--header-text-color, white);
         text-align: center;
@@ -75,7 +79,7 @@ export class MyCard extends LitElement {
       }
 
       .card-body {
-        padding: 20px;
+        padding: 16px;
       }
 
       .card-body p {
@@ -95,7 +99,7 @@ export class MyCard extends LitElement {
       }
 
       .card-footer {
-        padding: 20px;
+        padding: 16px;
         text-align: center;
         background-color: var(--footer-bg-color, #f4f4f4);
       }
@@ -120,7 +124,9 @@ export class MyCard extends LitElement {
   render() {
     return html`
       <div>
-        ${this.image ? html`<img src="${this.image}" alt="${this.title}" />` : ''}
+        ${this.image
+          ? html`<img src="${this.image}" alt="${this.title}" />`
+          : ''}
         <div class="card-header">
           <h1>${this.title}</h1>
           <p>${this.subtitle}</p>
@@ -142,12 +148,10 @@ export class MyCard extends LitElement {
     `;
   }
 
-  // Toggle the 'fancy' attribute when the details section is opened or closed
   _onToggle(e) {
     this.fancy = e.target.open;
   }
 
-  // Sync 'fancy' attribute with the details element's open state
   updated(changedProperties) {
     if (changedProperties.has('fancy')) {
       const detailsElement = this.shadowRoot.querySelector('details');
@@ -157,11 +161,9 @@ export class MyCard extends LitElement {
     }
   }
 
-  // Event handler for the button click
   _onButtonClick() {
     alert('Learn more about this card!');
   }
 }
 
-// Register the custom element with the browser
 customElements.define(MyCard.tag, MyCard);
